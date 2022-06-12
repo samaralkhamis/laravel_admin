@@ -104,7 +104,7 @@ div.card{
                     <div class="row mb-3">
                         <div class="col-md-6">
                         <label for="time" class="col-md-4 col-form-label text-md-end">Time</label>
-                    <input type="date" name="time" required>
+                    <input type="datetime-local" name="time" required>
                     </div>
                     </div>
 

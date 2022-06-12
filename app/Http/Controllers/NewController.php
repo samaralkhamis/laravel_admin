@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\elders;
+
 use Illuminate\Support\Facades\DB;
 
 class NewController extends Controller
@@ -51,31 +53,70 @@ class NewController extends Controller
    }
 
    public function deleteData($id){
-
       $usersInfo = DB::delete('delete from users where user_id = ?',[$id]);         
       return redirect('\utable')->with('message','The data has been Deleted successfully');
-
    }
    
    public function editData($id){
-      $update = User::find($id);
+      $update = DB::select('select * from users where user_id = :id', ['id' => $id]);
       return view('layout.update',compact('update'));
    }
          
    public function updateData(Request $request, $id)
-   {
-      $update = User::find($id); //Post is the model name
-      $update->name=$request->input('name');
-      $update->email=$request->input('email');
-      $update->password=$request->input('password');
-      $update->gender=$request->input('gender');
-      $update->age=$request->input('age');
-      $update->front_id_pic=$request->input('front_id_pic');
-      $update->back_id_pic=$request->input('back_id_pic');
-      $update->needed_services=$request->input('needed_services');
-      $update->time=$request->input('time');
-      $update->car=$request->input('car');
-      $update->update();
+   {   
+      $is_accepted=$request->input('is_accepted');
+      $is_deleted=$request->input('is_deleted');
+      DB::update('update users set is_accepted = ? , is_deleted=? where user_id = ?', [$is_accepted,$is_deleted,$id]);
       return redirect('utable')->with('message','The data has been updated successfully');
+
    }
+
+   #################################### Elder ################################################
+
+   public function viewElderData()
+   {
+      $ud = elders::all();
+      return view('layout.ElderTable', compact('ud'));
+   }
+
+   public function viewaddd()
+   {
+      return view('layout.createElder');
+   }
+
+   public function createElderData(Request $request){
+         $create=new elders();
+         $create->name=$request->input('name');
+         $create->age=$request->input('age');
+         $create->phone_num=$request->input('phone_num');
+         $create->needed_services=$request->input('needed_services');
+         $create->time_needed=$request->input('time_needed');
+         $create->gender=$request->input('gender');
+         $create->location=$request->input('location');
+         $create->guardian_name=$request->input('guardian_name');
+         $create->guardian_number=$request->input('guardian_number');
+         $create->guardian_relation=$request->input('guardian_relation');
+         $create->guardian_id_pic=$request->input('guardian_id_pic');
+         $create->save();
+         return redirect('etable')->with('message','The data has been added successfully');
+       }
+
+      public function deleteElderData($id){
+         $usersInfo = DB::delete('delete from elders where elder_id = ?',[$id]);         
+         return redirect('etable')->with('message','The data has been Deleted successfully');
+      }
+
+      public function editElderData($id){
+         $update = DB::select('select * from elders where elder_id = :id', ['id' => $id]);
+         return view('layout.updateElder',compact('update'));
+      }
+            
+      public function updateElderData(Request $request, $id)
+      {   
+         $is_accepted=$request->input('is_accepted');
+         $is_deleted=$request->input('is_deleted');
+         DB::update('update elders set is_accepted = ? , is_deleted=? where elder_id = ?', [$is_accepted,$is_deleted,$id]);
+         return redirect('etable')->with('message','The data has been updated successfully');
+   
+      }
 }

@@ -25,11 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('back_id_pic');
             $table->enum('needed_services',['Cleaning','Transportation','Provide_needs','Personal_hygiene','Personal_check',]);
             $table->dateTime('time');
-            $table->boolean('car');
-            $table->string('string');
-            $table->boolean('is_accepted');
-            $table->boolean('is_deleted');
-
+            $table->string('car');
+            $table->boolean('is_accepted')->default('0');
+            $table->boolean('is_deleted')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
