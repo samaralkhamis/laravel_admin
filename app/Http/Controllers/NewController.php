@@ -59,7 +59,7 @@ class NewController extends Controller
    
    public function editData($id){
       $update = User::find($id);
-      return view('update',compact('update'));
+      return view('layout.update',compact('update'));
    }
          
    public function updateData(Request $request, $id)
@@ -76,6 +76,6 @@ class NewController extends Controller
       $update->time=$request->input('time');
       $update->car=$request->input('car');
       $update->update();
-      return redirect('movies')->with('message','The data has been updated successfully');
+      return redirect('utable')->with('message','The data has been updated successfully');
    }
 }
