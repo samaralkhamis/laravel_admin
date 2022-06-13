@@ -27,9 +27,6 @@
                     <th class="align-middle text-center text-sm">Services</th>
                     <th class="align-middle text-center text-sm">Time</th>
                     <th class="align-middle text-center text-sm">Car</th>
-                    <th class="align-middle text-center text-sm">Is Accepted</th>
-                    <th class="align-middle text-center text-sm">Is Deleted</th>
-
                     <th class="align-middle text-center text-sm">Action</th>
                   </tr>
                 </thead>
@@ -38,7 +35,7 @@
                   <tr>
                     <td>
                         <div class="align-middle text-center text-sm">
-                          <h6 class="align-middle text-center text-sm">{{$data->user_id}}</h6>
+                          <h6 class="align-middle text-center text-sm">{{$data->id}}</h6>
                         </div>
                     </td>
                     <td>
@@ -62,17 +59,12 @@
                     <td class="align-middle text-center text-sm">
                       <span>{{$data->car}} </span>
                     </td>  
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">{{$data->is_accepted}} </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">{{$data->is_deleted}} </span>
-                    </td>
+
                     
                     <td class="align-middle text-center text-sm">
-                      <a href="{{url('delete/id/'.$data->user_id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
+                      <a href="{{url('delete/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
 
-                      <a href="{{url('edit/id/'.$data->user_id)}}"><i class="fas fa-edit" style="color:green"></i>
+                      <a href="{{url('edit/id/'.$data->id)}}"><i class="fas fa-edit" style="color:green"></i>
                       </a>
 
                     </td>

@@ -14,18 +14,22 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('user_id');
+            $table->bigIncrements('id');
             $table->string('name');
+            $table->string('lname')->nullable();
+            $table->string('img')->nullable();
+            $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('gender', ['Male','Female']);
-            $table->integer('age');
-            $table->string('front_id_pic');
-            $table->string('back_id_pic');
-            $table->enum('needed_services',['Cleaning','Transportation','Provide_needs','Personal_hygiene','Personal_check',]);
-            $table->dateTime('time');
-            $table->string('car');
+            $table->enum('gender', ['Male','Female'])->nullable();
+            $table->date('age')->nullable();
+            $table->string('front_id_pic')->nullable();
+            $table->string('back_id_pic')->nullable();
+            $table->enum('needed_services',['Cleaning','Transportation','Provide_needs','Personal_hygiene','Personal_check',])->nullable();
+            $table->dateTime('time')->nullable();
+            $table->dateTime('timeTo')->nullable();
+            $table->string('car')->nullable();
             $table->boolean('is_accepted')->default('0');
             $table->boolean('is_deleted')->default('0');
             $table->rememberToken();

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+    crossorigin="anonymous"
+  />
+
+
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <section class="sign-in mt-5">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="img/signin-image.jpg" alt="sing up image"></figure>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Login</h2>
+                    <form method="POST" action="{{url('login')}}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="email"><i class="fa fa-user"></i></label>
+                            <input type="email" name="email" id="email" placeholder="email"/><br>
+                            <span style="color: red;">@error('email'){{$message}}@enderror </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="fa fa-unlock-alt"></i></label>
+                            <input type="password" name="password" id="your_pass" placeholder="Password"/><br>
+                            <span style="color: red;">@error('password'){{$message}}@enderror </span>
+
+                        </div>
+                        
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

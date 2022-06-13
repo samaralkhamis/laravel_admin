@@ -23,7 +23,7 @@ div.card{
                 <div class="card-header"></div>
                 <div class="card-body">
 @foreach($update as $data)
-                    <form action="{{url('/update/id/'.$data->user_id)}}" method="post">
+                    <form action="{{url('/update/id/'.$data->id)}}" method="post">
                       @csrf
                       @method('PUT')
                           <div class="row mb-3">

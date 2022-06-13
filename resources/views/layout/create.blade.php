@@ -29,27 +29,23 @@ div.card{
                             <div class="col-md-6">
                             <label for="name" class="col-md-4 col-form-label text-md-end">First Name</label>
                                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <span style="color: red;">@error('name'){{$message}}@enderror </span>
+
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">last Name</label>
+                                <input id="name" type="text" name="lname" value="{{ old('lname') }}" required autocomplete="name" autofocus>
+                                <span style="color: red;">@error('lname'){{$message}}@enderror </span>
+
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
                                 <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            </div>
-                        </div>
-
-
-                           <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
-                                <input id="password" type="password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end"> Confirm Password </label>
-                            <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+                                <span style="color: red;">@error('email'){{$message}}@enderror </span>
                             </div>
                         </div>
 
@@ -81,7 +77,9 @@ div.card{
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="age" class="col-md-4 col-form-label text-md-end">age</label>
-                                <input id="age" type="number" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+                                <input id="age" type="date" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+                                <span style="color: red;">@error('age'){{$message}}@enderror </span>
+
                             </div>
                         </div>
              
@@ -118,8 +116,23 @@ div.card{
                               </select>
                         </div>
                     </div>
-                
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
+                            <input id="password" type="password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
+                            <span style="color: red;">@error('password'){{$message}}@enderror </span>
 
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end"> Confirm Password </label>
+                        <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+                        <span style="color: red;">@error('password_confirmation'){{$message}}@enderror </span>
+                        </div>
+                    </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">SUBMIT

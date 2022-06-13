@@ -30,8 +30,6 @@
                     <th class="align-middle text-center text-sm">Guardian Number</th>
                     <th class="align-middle text-center text-sm">Guardian Relation</th>
                     <th class="align-middle text-center text-sm">Guardian id Pic</th>
-                    <th class="align-middle text-center text-sm">Is Accepted</th>
-                    <th class="align-middle text-center text-sm">Is Deleted</th>
                     <th class="align-middle text-center text-sm">Action</th>
                   </tr>
                 </thead>
@@ -74,12 +72,6 @@
                       <img src="{{$data->guardian_id_pic}}" width="100%">
                     </td>
 
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">{{$data->is_accepted}} </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">{{$data->is_deleted}} </span>
-                    </td>
                     
                     <td class="align-middle text-center text-sm">
                       <a href="{{url('delete/id/'.$data->elder_id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
