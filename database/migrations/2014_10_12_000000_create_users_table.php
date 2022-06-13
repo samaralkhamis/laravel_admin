@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('car')->nullable();
             $table->boolean('is_accepted')->default('0');
             $table->boolean('is_deleted')->default('0');
+            $table->boolean('is_admin')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

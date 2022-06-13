@@ -31,31 +31,42 @@ class NewController extends Controller
       return view('layout.create');
    }
 
-   // public function createData(Request $request){
-   //     $create=new User();
-   //     $create->name=$request->input('name');
-   //     $create->email=$request->input('email');
-   //     $create->password=$request->input('password');
-   //     $create->gender=$request->input('gender');
-   //     $create->age=$request->input('age');
-   //     $create->front_id_pic=$request->input('front_id_pic');
-   //     $create->back_id_pic=$request->input('back_id_pic');
-   //     $create->needed_services=$request->input('needed_services');
-   //     $create->time=$request->input('time');
-   //     $create->car=$request->input('car');
-   //     $create->save();
-   //     return redirect('utable')->with('message','The data has been added successfully');
-   //  }
-
    public function viewData()
    {
-      $ud = User::where('is_deleted',0)->where('is_accepted',1)->get();
+      $ud = User::where('is_deleted',0)->where('is_accepted',1)->where('is_admin',0)->get();
       return view('layout.UserTable', compact('ud'));
    }
 
+   public function viewlogindata()
+   {
+         $email= request('email');
+         $pass= request('password');
+         $users = DB::select('select * from users where is_admin=1');
+         foreach ($users as $user) {
+             if($user->email == $email){
+                 if(($user->password == $pass)){
+                     return redirect('dashbord')->with('id',$user->id);
+                 }else{
+                     if($users[count($users)-1]->id == $user->id){
+                     return redirect('/login')->with('message','Email or password is wrong');
+                     }else{
+                         continue;
+                     }
+                 }
+             }else{
+                 if($users[count($users)-1]->id == $user->id){
+                     return redirect('/AdminLogin')->with('message','Email or password is wrong');
+                 }else{
+                     continue;
+                 }
+             }
+         }
+     }
+         
+
    public function viewdashData()
    {
-      $ud = User::where('is_deleted',0)->where('is_accepted',0)->get();
+      $ud = User::where('is_deleted',0)->where('is_accepted',0)->where('is_admin',0)->get();
       $rd = elders::where('is_deleted',0)->where('is_accepted',0)->get();
       return view('layout.dashbord', compact('ud','rd'));
    }

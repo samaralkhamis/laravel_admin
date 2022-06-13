@@ -36,5 +36,4 @@ Route::post('createElder', [NewController::class, 'createElderData']);
 Route::get('/delete/id/{id}', [NewController::class, 'deleteElderData']);
 Route::get('/edit/id/{id}', [NewController::class, 'editElderData']);
 Route::put('/updateElder/id/{id}', [NewController::class, 'updateElderData']);
-Route::post('login', [NewController::Class, 'login_validate']);
-Route::view("check","login");
+Route::post('login', [NewController::Class, 'viewlogindata']);

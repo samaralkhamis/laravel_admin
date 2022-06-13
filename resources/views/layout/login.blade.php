@@ -23,7 +23,6 @@
                 <div class="signin-image">
                     <figure><img src="img/signin-image.jpg" alt="sing up image"></figure>
                 </div>
-
                 <div class="signin-form">
                     <h2 class="form-title">Login</h2>
                     <form method="POST" action="{{url('login')}}">
@@ -31,25 +30,24 @@
                         <div class="form-group">
                             <label for="email"><i class="fa fa-user"></i></label>
                             <input type="email" name="email" id="email" placeholder="email"/><br>
-                            <span style="color: red;">@error('email'){{$message}}@enderror </span>
-
-                        </div>
+                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="fa fa-unlock-alt"></i></label>
                             <input type="password" name="password" id="your_pass" placeholder="Password"/><br>
-                            <span style="color: red;">@error('password'){{$message}}@enderror </span>
 
                         </div>
-                        
+                        @if (session('message'))
+                        <div class="alert alert-danger" role="alert">
+                            {{session('message')}}
+                        </div>
+                    @endif
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            <button type="submit" name="login" id="signin" class="form-submit"> login</button>
                         </div>
                     </form>
-                    
                 </div>
             </div>
         </div>
     </section>
-
 </body>
 </html>
