@@ -24,10 +24,10 @@
                     <div class="card card-blog card-plain">
                       <div class="card-header p-0 mt-n4 mx-3">
                         <a class="d-block shadow-xl border-radius-xl">
-                          <img src="{{$data->front_id_pic}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                          <img src="/img/{{$data->front_id_pic}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                         </a>
                       </div>
-                      <h4 style="text-align:center">{{$data->name}}</h4>
+                      <h4 style="text-align:center">User Name : {{$data->name}}</h4>
                       <div class="card-body p-3">
                         <div style="text-align:center">
                           <button type="button" class="btn btn-outline-primary btn-sm mb-0"><a href="{{url('profile/id/'.$data->id)}}"> Show Details</a></button>
@@ -50,10 +50,10 @@
           <div class="card card-blog card-plain">
             <div class="card-header p-0 mt-n4 mx-3">
               <a class="d-block shadow-xl border-radius-xl">
-                <img src="{{$i->guardian_id_pic}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                <img src="/img/{{$i->guardian_id_pic}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
               </a>
             </div>
-            <h4 style="text-align:center">{{$i->name}}</h4>
+            <h4 style="text-align:center">Gardian Name :{{$i->name}}</h4>
             <div class="card-body p-3">
               <div style="text-align:center">
                 <button type="button" class="btn btn-outline-primary btn-sm mb-0"><a href="{{url('profilereq/id/'.$i->elder_id)}}"> Show Details</a></button>

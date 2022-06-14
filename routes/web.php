@@ -15,8 +15,8 @@ use App\Http\Controllers\NewController;
 |
 */
 Route::get('login', [NewController::class, 'displaylogin'] );
-Route::get('dashbord', [NewController::class, 'displaydash'] );
-Route::get('dashbord', [NewController::Class,'viewdashData']);
+Route::get('/', [NewController::class, 'displaydash'] );
+Route::get('/', [NewController::Class,'viewdashData']);
 Route::get('profile/id/{id}', [NewController::Class,'viewdashproData']);
 Route::get('profilereq/id/{id}', [NewController::Class,'viewdashreqData']);
 Route::get('acceptuser/id/{id}', [NewController::Class,'acceptuser']);

@@ -69,7 +69,7 @@
                   </td>
 
                     <td class="align-middle text-center">
-                      <img src="{{$data->guardian_id_pic}}" width="100%">
+                      <img src="/img/{{$data->guardian_id_pic}}" width="100%">
                     </td>
 
                     

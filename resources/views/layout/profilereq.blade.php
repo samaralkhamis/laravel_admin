@@ -50,7 +50,7 @@
             <div class="col-12 col-xl-4">
                   <div class="card-body p-5 ml-5 mt-4">
                         <ul class="list-group" type="none">
-                        <li> <strong class="text-dark">ID Picture :&nbsp;</strong> <img src="{{$i->guardian_id_pic}}"             width="100%"></li>
+                        <li> <strong class="text-dark">ID Picture :&nbsp;</strong> <img src="/img/{{$i->guardian_id_pic}}"width="100%"></li>
                         <li class="list-group-item border-0 ps-0 pb-0">
                         <strong class="text-dark">Guardian Name :&nbsp;</strong> {{$i->guardian_name}} 
                         </li>  

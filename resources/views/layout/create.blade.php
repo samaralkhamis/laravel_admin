@@ -1,26 +1,30 @@
 @extends('layout.master')  
 @section('content')
-
-    <style>
-
-button.btn.btn-primary {
-color: #fff;
-border-color:#008E89;
-background: #008E89;
-}
-
-div.card{
-    color: #008E89;
-}
-    </style>
-
+<style>
+    .card-header:first-child {
+            color: white;
+            background:#008E89;
+        
+    }
+    button.btn.btn-primary {
+    color: #fff;
+    border-color:#008E89;
+    background: #008E89;
+        
+    }
+    
+    div.card{
+        color: #008E89;
+    }
+        </style>
 <html>
 <body>
-<div class="container">
-    <div class="row justify-content-center">
-       
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
             <div class="card">
-                <div class="card-header"></div>
+                <div class="card-header">  <h4 style="text-align:center; color:white"> ADD USER </h4>
+                </div>
                 <div class="card-body">
                     
                     <form  action="{{url('create')}}"method="post">
@@ -30,7 +34,6 @@ div.card{
                             <label for="name" class="col-md-4 col-form-label text-md-end">First Name</label>
                                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 <span style="color: red;">@error('name'){{$message}}@enderror </span>
-
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -76,7 +79,7 @@ div.card{
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="age" class="col-md-4 col-form-label text-md-end">age</label>
+                                <label for="age" class="col-md-4 col-form-label text-md-end">Age</label>
                                 <input id="age" type="date" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
                                 <span style="color: red;">@error('age'){{$message}}@enderror </span>
 
@@ -84,16 +87,17 @@ div.card{
                         </div>
              
 
-                        <div class="row mb-3">
-                            <label for="front_id_pic" class="col-md-4 col-form-label text-md-end">Front id Pic</label>
-                            <div class="col-md-6">
+                        <div class="row mb-3 ">
+                            <div class="col-md-7">
+                            <label for="front_id_pic" class="col-md-3 col-form-label text-md-end">Front Id Pic</label>
                             <input type="file" name="front_id_pic" placeholder="Image">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                            <label for="back_id_pic" class="col-md-4 col-form-label text-md-end">Back id Pic</label>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
+
+                            <label for="back_id_pic" class="col-md-3 col-form-label text-md-end">Back id Pic</label>
                         <input type="file" name="back_id_pic" placeholder="Image">
                     </div>
                     </div>
@@ -134,7 +138,7 @@ div.card{
                         </div>
                     </div>
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div style="margin-left:20%">
                                 <button type="submit" class="btn btn-primary">SUBMIT
                                 </button>
                             </div>

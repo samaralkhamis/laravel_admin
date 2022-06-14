@@ -11,7 +11,7 @@
       <div class="row gx-4 mb-2">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src=" {{$i->img}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            <img src="\img\{{$i->img}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
           </div>
         </div>
         <div class="col-auto my-auto">
@@ -54,9 +54,9 @@
                         <ul class="list-group">
                         
                             <li class="list-group-item border-0 ps-0 pb-0">
-                               <strong class="text-dark">Front ID Picture :&nbsp;</strong> <img src="{{$i->front_id_pic}}" width="100%"> 
+                               <strong class="text-dark">Front ID Picture :&nbsp;</strong> <img src="/img/{{$i->front_id_pic}}" width="100%"> 
                                 
-                               <strong class="text-dark">Back ID Picture :&nbsp;</strong> <img src="{{$i->back_id_pic}}" width="100%"> 
+                               <strong class="text-dark">Back ID Picture :&nbsp;</strong> <img src="/img/{{$i->back_id_pic}}" width="100%"> 
     
                                </li>
                           

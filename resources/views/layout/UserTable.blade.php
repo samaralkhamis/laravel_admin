@@ -45,10 +45,10 @@
                       <span class="badge badge-sm bg-gradient-success">{{$data->email}} </span>
                     </td>
                     <td class="align-middle text-center">
-                      <img src="{{$data->front_id_pic}}" width="100%">
+                      <img src="/img/{{$data->front_id_pic}}" width="100%">
                     </td>
                     <td class="align-middle text-center">
-                      <img src="{{$data->back_id_pic}}" width="100%">
+                      <img src="/img/{{$data->back_id_pic}}" width="100%">
                     </td>
                     <td class="align-middle text-center text-sm">
                       <span>{{$data->needed_services}} </span>
