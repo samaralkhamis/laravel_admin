@@ -45,7 +45,7 @@ class NewController extends Controller
          foreach ($users as $user) {
              if($user->email == $email){
                  if(($user->password == $pass)){
-                     return redirect('dashbord')->with('id',$user->id);
+                     return redirect('/')->with('id',$user->id);
                  }else{
                      if($users[count($users)-1]->id == $user->id){
                      return redirect('/login')->with('message','Email or password is wrong');
@@ -55,7 +55,7 @@ class NewController extends Controller
                  }
              }else{
                  if($users[count($users)-1]->id == $user->id){
-                     return redirect('/AdminLogin')->with('message','Email or password is wrong');
+                     return redirect('//')->with('message','Email or password is wrong');
                  }else{
                      continue;
                  }
