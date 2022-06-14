@@ -1,17 +1,13 @@
 @extends('layout.master')
-@section('title','User')
+@section('title','Pending Users')
 @section('content')
 
-
 <div class="container-fluid py-4">
-    <div class="row">
-        <a href="{{url('create')}}" class="card-link btn w-10 " style="background-color:#008E89 ; color:white; margin-left:85%">add</a>
-        </div>
       <div class="col-12">
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Users</h6>
+              <h6 class="text-white text-capitalize ps-3"> Pending Users</h6>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
@@ -22,12 +18,14 @@
                     <th class="align-middle text-center text-sm">ID</th>
                     <th class="align-middle text-center text-sm">Name</th>
                     <th class="align-middle text-center text-sm">Email</th>
+                    <th class="align-middle text-center text-sm">Phone</th>
                     <th class="align-middle text-center text-sm">Front ID</th>
                     <th class="align-middle text-center text-sm">Back ID</th>
-                    <th class="align-middle text-center text-sm">Services</th>
-                    <th class="align-middle text-center text-sm">Time</th>
-                    <th class="align-middle text-center text-sm">Car</th>
-                    <th class="align-middle text-center text-sm">Action</th>
+                    <th class="align-middle text-center text-sm">Service for job taken</th>
+                    <th class="align-middle text-center text-sm">Available Time</th>
+                    <th class="align-middle text-center text-sm">Have A Car</th>
+                    <th class="align-middle text-center text-sm">Accept</th>
+                    <th class="align-middle text-center text-sm">Deny</th>
                   </tr>
                 </thead>
                 <tbody> 
@@ -44,6 +42,9 @@
                     <td class="align-middle text-center text-sm">
                       <span class="badge badge-sm bg-gradient-success">{{$data->email}} </span>
                     </td>
+                    <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">{{$data->phone}} </span>
+                      </td>
                     <td class="align-middle text-center">
                       <img src="/img/{{$data->front_id_pic}}" width="100%">
                     </td>
@@ -60,13 +61,11 @@
                       <span>{{$data->car}} </span>
                     </td>  
 
-                    
                     <td class="align-middle text-center text-sm">
-                      <a href="{{url('delete/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
-
-                      {{-- <a href="{{url('edit/id/'.$data->id)}}"><i class="fas fa-edit" style="color:green"></i> --}}
-                      {{-- </a> --}}
-
+                      <a href="{{url('acceptuser/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fas fa-check-circle" style="font-size:30px ; color:green"></i></a>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                        <a href="{{url('denyUser/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fas fa-ban" style="font-size:30px ; color:red"></i></a>
                     </td>
                   </tr>
                   @endforeach
@@ -76,4 +75,6 @@
           </div>
         </div>
     
+
+
 @endsection

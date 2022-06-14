@@ -11,17 +11,28 @@
     integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
     crossorigin="anonymous"
   />
-
-
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <title>Document</title>
+    <style>
+      
+        button.btn.btn-primary {
+        color: #fff;
+        border-color:#008E89;
+        background: #008E89;
+            
+        }
+        
+        div.card{
+            color: #008E89;
+        }
+            </style>
 </head>
 <body>
     <section class="sign-in mt-5">
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image">
-                    <figure><img src="img/signin-image.jpg" alt="sing up image"></figure>
+                    <figure><img src='/img/login.png' alt="sing up image"></figure>
                 </div>
                 <div class="signin-form">
                     <h2 class="form-title">Login</h2>
@@ -42,7 +53,7 @@
                         </div>
                     @endif
                         <div class="form-group form-button">
-                            <button type="submit" name="login" id="signin" class="form-submit"> login</button>
+                            <button type="submit" name="login" id="signin" class="btn btn-primary btn-block"> login</button>
                         </div>
                     </form>
                 </div>

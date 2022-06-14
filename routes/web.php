@@ -15,12 +15,8 @@ use App\Http\Controllers\NewController;
 |
 */
 Route::get('login', [NewController::class, 'displaylogin'] );
-Route::get('/', [NewController::class, 'displaydash'] );
-Route::get('/', [NewController::Class,'viewdashData']);
-Route::get('profile/id/{id}', [NewController::Class,'viewdashproData']);
-Route::get('profilereq/id/{id}', [NewController::Class,'viewdashreqData']);
+Route::get('/', [NewController::class, 'displaydash']);
 Route::get('acceptuser/id/{id}', [NewController::Class,'acceptuser']);
-Route::get('acceptreq/id/{id}', [NewController::Class,'Acceptreq']);
 Route::get('utable', [NewController::class, 'displayUTables'] );
 Route::get('stable', [NewController::class, 'displaySTables'] );
 Route::get('utable', [NewController::Class,'viewData']);
@@ -37,3 +33,15 @@ Route::get('/delete/id/{id}', [NewController::class, 'deleteElderData']);
 Route::get('/edit/id/{id}', [NewController::class, 'editElderData']);
 Route::put('/updateElder/id/{id}', [NewController::class, 'updateElderData']);
 Route::post('login', [NewController::Class, 'viewlogindata']);
+Route::get('/',  [NewController::class, 'showdynamicdata']);
+Route::get('PendingUsers',  [NewController::class, 'displayPenUsers']);
+Route::get('PendingRequests',  [NewController::class, 'displayPenReq']);
+Route::get('PendingUsers', [NewController::Class,'viewdashData']);
+Route::get('PendingRequests', [NewController::Class,'viewdashreqData']);
+Route::get('acceptreq/id/{id}', [NewController::Class,'Acceptreq']);
+Route::get('/denyUser/id/{id}', [NewController::class, 'denyData']);
+Route::get('/denyreq/id/{id}', [NewController::class, 'denyreq']);
+
+
+
+

@@ -35,7 +35,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/')}}">
+          <a class="nav-link text-white" href="{{url('/')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -43,22 +43,41 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('PendingUsers')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons text-sm my-auto me-1">schedule</i>
+            </div>
+            <span class="nav-link-text ms-1">Pending Users</span>
+          </a>
+        </li> 
+
+        <li class="nav-item">
           <a class="nav-link text-white " href="{{url('/utable')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">USERS</span>
+            <span class="nav-link-text ms-1">Accepted Users</span>
           </a>
         </li>
        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('PendingRequests')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons text-sm my-auto me-1">schedule</i>
+            </div>
+            <span class="nav-link-text ms-1">Pending Requests</span>
+          </a>
+        </li> 
+        
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('/etable')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">REQUESTS</span>
+            <span class="nav-link-text ms-1">Accepted Requests</span>
           </a>
         </li>
+
 
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">

@@ -17,11 +17,13 @@ class NewController extends Controller
      public function displayUTables(){
       return view('layout.userTable');
    }
-   
-   public function displaySTables(){
-      return view('layout.ServiceTable');
-   }
 
+   public function displayPenUsers(){
+      return view('layout.penusers');
+   }
+   public function displayPenReq(){
+      return view('layout.penreq');
+   }
    public function displayETables(){
       return view('layout.ElderTable');
    }
@@ -55,7 +57,7 @@ class NewController extends Controller
                  }
              }else{
                  if($users[count($users)-1]->id == $user->id){
-                     return redirect('//')->with('message','Email or password is wrong');
+                     return redirect('/')->with('message','Email or password is wrong');
                  }else{
                      continue;
                  }
@@ -67,25 +69,23 @@ class NewController extends Controller
    public function viewdashData()
    {
       $ud = User::where('is_deleted',0)->where('is_accepted',0)->where('is_admin',0)->get();
+      return view('layout.penusers', compact('ud'));
+   }
+
+   public function viewdashreqData()
+   {
       $rd = elders::where('is_deleted',0)->where('is_accepted',0)->get();
-      return view('layout.dashbord', compact('ud','rd'));
-   }
-
-   public function viewdashproData($id)
-   {
-      $ud = DB::select('select * from users where id = ?', [$id]);
-      return view('layout.profile', compact('ud'));
-   }
-
-   public function viewdashreqData($id)
-   {
-      $rd = DB::select('select * from elders where elder_id = ?', [$id]);
-      return view('layout.profilereq', compact('rd'));
+      return view('layout.penreq', compact('rd'));
    }
 
    public function deleteData($id){
-      $usersInfo = DB::delete('delete from users where id = ?',[$id]);         
+      $usersInfo = DB::update('update users set is_deleted = ? where id = ?',[1,$id]);         
       return redirect('\utable')->with('message','The data has been Deleted successfully');
+   }
+
+   public function denyData($id){
+      $usersInfo = DB::update('update users set is_deleted = ? where id = ?',[1,$id]);         
+      return redirect('PendingUsers')->with('message','The data has been Deleted successfully');
    }
    
    public function editData($id){
@@ -95,12 +95,12 @@ class NewController extends Controller
 
    public function Acceptuser($id){
       DB::update('update users set is_accepted =? where id = ?', [1, $id]);
-      return redirect('utable')->with('message','The user has been Accepted Successfully');
+      return redirect('PendingUsers')->with('message','The user has been Accepted Successfully');
    }
 
    public function Acceptreq($id){
       DB::update('update elders set is_accepted =? where elder_id = ?', [1, $id]);
-      return redirect('etable')->with('message','The request has been Accepted Successfully');
+      return redirect('PendingRequests')->with('message','The request has been deleted Successfully');
    }
 
    public function updateData(Request $request, $id)
@@ -111,7 +111,10 @@ class NewController extends Controller
       return redirect('utable')->with('message','The data has been updated successfully');
 
    }
-
+   public function denyreq($id){
+      $usersInfo = DB::update('update elders set is_deleted = ? where elder_id = ?',[1,$id]);         
+      return redirect('PendingRequests')->with('message','The data has been Deleted successfully');
+   }
    #################################### Elder ################################################
 
    public function viewElderData()
@@ -159,26 +162,15 @@ class NewController extends Controller
          return redirect('etable')->with('message','The data has been updated successfully');
    
       }
-
-      public function login_validate(Request $request){
-         $password="Admin*12";
-         $email='Admin@gmail.com';
-         $request->validate([
-             'email'=>'required|email|',       
-             'password'=>'required|min:8|regex:/^.(?=.{3,})(?=.[a-zA-Z])(?=.[0-9])(?=.[\d\x])(?=.[!$#%]).$/'
-         ]);
-
-         return $request->input(); }
-
-
          public function insert_user(Request $request){
+
                 $request->validate([
                   'name'=>'required|alpha',
                   'lname'=>'required|alpha',
                   'email'=>'required|email',
                   'password'=>'required|min:8',
                   'phone'=>'numeric|digits_between:9,11',
-                  'age'=>'required', 'before:13 years ago',
+                  'age'=>'required',
                   'password_confirmation' => 'required_with:password|same:password|min:8',
               ]);
                 $create=new User();
@@ -196,12 +188,30 @@ class NewController extends Controller
                 $create->timeTo=$request->input('timeTo');
                 $create->car=$request->input('car');
                 $create->save();
-            
-            
-            
-                return view('layout.UserTable')->with('messageRej','The data has been add user successfully');
+                return redirect('/')->with('messageRej','The data has been add user successfully');
                 }
 
+
+                
+                public function showdynamicdata ()
+                {
+                  $users = DB::table('users')->where('is_accepted', '=', 1)->get();
+                  $users_count = $users->count();
+
+                  $elders = DB::table('elders')->where('is_accepted', '=', 1)
+                  ->get();
+                  $elders_count = $elders->count();
+                   /////////////
+                   $events = DB::table('events')->get();
+                   $events_count = $events->count();
+                   /////////////////
+                   DB::update('update auns_numbers set users_number = ? , elders_number = ? , events_number = ?  where id = 1 ', [$users_count,$elders_count,$events_count]);
+            
+                   $numbers = DB::table('auns_numbers')
+                ->where('id',1)
+                ->get();
+                return view('layout.dashbord',compact('numbers'));
+                } 
 
                //  public function createElderData(Request $request){
                //    $request->validate([
