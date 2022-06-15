@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','User')
+@section('title','Accepted Users')
 @section('content')
 
 
@@ -11,7 +11,7 @@
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Users</h6>
+              <h6 class="text-white text-capitalize ps-3">Accepted Users</h6>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
@@ -62,10 +62,10 @@
 
                     
                     <td class="align-middle text-center text-sm">
-                      <a href="{{url('delete/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
+                      <a href="{{url('deleteUser/id/'.$data->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete user"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></a><br>
 
-                      {{-- <a href="{{url('edit/id/'.$data->id)}}"><i class="fas fa-edit" style="color:green"></i> --}}
-                      {{-- </a> --}}
+                      <a href="{{url('editus/id/'.$data->id)}}"><i class="fas fa-edit" style="color:green"></i> 
+                      </a>
 
                     </td>
                   </tr>

@@ -27,6 +27,12 @@ class NewController extends Controller
    public function displayETables(){
       return view('layout.ElderTable');
    }
+   public function displayUsers(){
+      return view('layout.Users');
+   }
+   public function displayRequests(){
+      return view('layout.Request');
+   }
 
    public function viewadd()
    {
@@ -80,7 +86,7 @@ class NewController extends Controller
 
    public function deleteData($id){
       $usersInfo = DB::update('update users set is_deleted = ? where id = ?',[1,$id]);         
-      return redirect('\utable')->with('message','The data has been Deleted successfully');
+      return redirect('utable')->with('message','The data has been Deleted successfully');
    }
 
    public function denyData($id){
@@ -88,10 +94,7 @@ class NewController extends Controller
       return redirect('PendingUsers')->with('message','The data has been Deleted successfully');
    }
    
-   public function editData($id){
-      $update = DB::select('select * from users where id = :id', ['id' => $id]);
-      return view('layout.update',compact('update'));
-   }
+   
 
    public function Acceptuser($id){
       DB::update('update users set is_accepted =? where id = ?', [1, $id]);
@@ -103,12 +106,29 @@ class NewController extends Controller
       return redirect('PendingRequests')->with('message','The request has been deleted Successfully');
    }
 
+   public function editData($id){
+      $update = DB::select('select * from users where id = :id', ['id' => $id]);
+      return view('layout.updateus',compact('update'));
+   }
+
    public function updateData(Request $request, $id)
    {   
+      $name=$request->input('name');
+      $lname=$request->input('lname');
+      $img=$request->input('img');
+      $phone=$request->input('phone');
+      $email=$request->input('email');
+      $age=$request->input('age');
+      $needed_services=$request->input('needed_services');
+      $time=$request->input('time');
+      $timeTo=$request->input('timeTo');
+      $gender=$request->input('gender');
+      $front_id_pic=$request->input('front_id_pic');
+      $back_id_pic=$request->input('back_id_pic');
       $is_accepted=$request->input('is_accepted');
-      $is_deleted=$request->input('is_deleted');
-      DB::update('update users set is_accepted = ? , is_deleted=? where id = ?', [$is_accepted,$is_deleted,$id]);
+      DB::update('update users set name = ? ,lname = ? , img = ?, phone = ? ,email = ? , age = ? ,needed_services=?,time = ? ,timeTo= ?, gender=?, front_id_pic=?, back_id_pic=?, is_accepted=? where id = ?', [$name,$lname,$img,$phone,$email,$age,$needed_services,$time,$timeTo,$gender,$front_id_pic,$back_id_pic,$is_accepted,$id]);
       return redirect('utable')->with('message','The data has been updated successfully');
+
 
    }
    public function denyreq($id){
@@ -145,7 +165,7 @@ class NewController extends Controller
        }
 
       public function deleteElderData($id){
-         $usersInfo = DB::delete('delete from elders where elder_id = ?',[$id]);         
+         $usersInfo = DB::update('update elders set is_deleted = ? where elder_id = ?',[1,$id]);         
          return redirect('etable')->with('message','The data has been Deleted successfully');
       }
 
@@ -156,9 +176,17 @@ class NewController extends Controller
             
       public function updateElderData(Request $request, $id)
       {   
+         $phone_num=$request->input('phone_num');
+         $needed_services=$request->input('needed_services');
+         $time_needed=$request->input('time_needed');
+         $gender=$request->input('gender');
+         $location=$request->input('location');
+         $guardian_name=$request->input('guardian_name');
+         $guardian_relation=$request->input('guardian_relation');
+         $guardian_id_pic=$request->input('guardian_id_pic');
          $is_accepted=$request->input('is_accepted');
-         $is_deleted=$request->input('is_deleted');
-         DB::update('update elders set is_accepted = ? , is_deleted=? where elder_id = ?', [$is_accepted,$is_deleted,$id]);
+
+         DB::update('update elders set phone_num = ? , needed_services=?,time_needed = ? , gender=?,location = ? , guardian_name=?, guardian_relation=?, guardian_id_pic=?, is_accepted=? where id = ?', [$phone_num,$needed_services,$time_needed,$gender,$location,$guardian_name,$guardian_relation,$guardian_id_pic,$is_accepted,$id]);
          return redirect('etable')->with('message','The data has been updated successfully');
    
       }

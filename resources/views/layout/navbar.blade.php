@@ -43,38 +43,30 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('PendingUsers')}}">
+          <a class="nav-link text-white " href="{{url('Users')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons text-sm my-auto me-1">schedule</i>
+              <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Pending Users</span>
+            <span class="nav-link-text ms-1">Users</span>
           </a>
         </li> 
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link text-white " href="{{url('/utable')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Accepted Users</span>
           </a>
-        </li>
-       
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('PendingRequests')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons text-sm my-auto me-1">schedule</i>
-            </div>
-            <span class="nav-link-text ms-1">Pending Requests</span>
-          </a>
-        </li> 
+        </li> --}}
+        
         
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('/etable')}}">
+          <a class="nav-link text-white " href="{{url('Requets')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Accepted Requests</span>
+            <span class="nav-link-text ms-1">Requests</span>
           </a>
         </li>
 

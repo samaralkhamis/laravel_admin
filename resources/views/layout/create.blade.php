@@ -51,6 +51,13 @@
                                 <span style="color: red;">@error('email'){{$message}}@enderror </span>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="phone_num" class="col-md-4 col-form-label text-md-end">Phone Number</label>
+                                <input id="phone_num" type="number" name="phone_num" value="{{ old('phone_num') }}" required autocomplete="phone_num" autofocus>
+                                <span style="color: red;">@error('phone_num'){{$message}}@enderror </span>
+                            </div>
+                        </div>
 
                         <div class="row mb-3"> 
                         <div class="col-md-6">
